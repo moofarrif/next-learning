@@ -44,7 +44,7 @@ export const PokemonCards = ({ pokemon }: Props) => {
             </div>
             <div className="pl-3">
               <p className="text-sm font-medium text-gray-800 g-none">
-                itsn favorite
+                Add to favorites
               </p>
             </div>
           </Link>

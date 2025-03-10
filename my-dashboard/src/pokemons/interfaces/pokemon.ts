@@ -12,8 +12,8 @@ export interface Pokemon {
     moves:                    Move[];
     name:                     string;
     order:                    number;
-    past_abilities:           any[];
-    past_types:               any[];
+    past_abilities:           unknown[];
+    past_types:               unknown[];
     species:                  Species;
     sprites:                  Sprites;
     stats:                    Stat[];

@@ -23,7 +23,7 @@ const menuItems = [
   {
     path: "/dashboard/pokemon",
     icon: <IoFootball size={40} />,
-    title: "Pokemons",
+    title: "Pokémons",
     subTitle: "Static generation",
   },
 ];

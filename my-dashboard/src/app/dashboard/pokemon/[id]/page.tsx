@@ -1,33 +1,51 @@
-import { Pokemon } from "@/pokemons";
-import { Metadata, NextPage } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
+import { Pokemon } from "@/pokemons";
+import { notFound } from "next/navigation";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id, name, sprites } = await getPokemon(params.id);
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  try {
+    const params = await props.params;
+    const { id, name, sprites } = await getPokemon(params.id);
 
-  return {
-    title: `# ${id} - ${name}`,
-    description: `Pókemon ${name}`,
-    icons: sprites.front_default,
-  };
+    return {
+      title: `# ${id} - ${name}`,
+      description: `Pókemon ${name}`,
+      icons: sprites.front_default,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      title: `Pokemon page`,
+      description: `Pókemon `,
+    };
+  }
 }
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
-  const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-    cache: "force-cache",
-    // next: {
-    //   revalidate: 60 * 60 * 30 * 6,
-    // },
-  }).then((res) => res.json());
+  try {
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+      cache: "force-cache",
+      // next: {
+      //   revalidate: 60 * 60 * 30 * 6,
+      // },
+    }).then((res) => res.json());
 
-  return pokemon;
+    console.log("se cargo", pokemon.name);
+
+    return pokemon;
+  } catch (error) {
+    console.log(error)
+    notFound();
+  }
 };
 
-export default async function PokemonPage({ params }: Props) {
+export default async function PokemonPage(props: Props) {
+  const params = await props.params;
   const pokemon = await getPokemon(params.id);
 
   return (
@@ -68,7 +86,7 @@ export default async function PokemonPage({ params }: Props) {
           </div>
 
           <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg ">
-            <p className="text-sm text-gray-600">Peso</p>
+            <p className="text-sm text-gray-600">Weight</p>
             <span className="text-base font-medium text-navy-700 flex">
               {pokemon.weight}
             </span>
