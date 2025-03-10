@@ -28,7 +28,7 @@ const PokemonsPage: NextPage = async () => {
   const pokemons = await getPokemons();
 
   return (
-    <div className="flex flex-col items-center  ">
+    <div className="flex flex-col items-center px-2 ">
       <span className="text-4xl font-bold text-center text-gray-800 p-2">
         Pokémon list <small>static</small>
       </span>

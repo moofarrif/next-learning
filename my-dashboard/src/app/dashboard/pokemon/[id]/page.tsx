@@ -54,8 +54,8 @@ export default async function PokemonPage(props: Props) {
   const pokemon = await getPokemon(params.id);
 
   return (
-    <div className="flex mt-5 flex-col items-center text-slate-800">
-      <div className="relative flex flex-col items-center rounded-[20px] w-[700px] mx-auto bg-white bg-clip-border  shadow-lg  p-3">
+    <div className="flex px-2 mt-5 flex-col items-center text-slate-800">
+      <div className="relative flex flex-col items-center rounded-[20px] w-full max-w-4xl mx-auto bg-white bg-clip-border shadow-lg p-3">
         <div className="mt-2 mb-8 w-full">
           <h1 className="px-2 text-xl font-bold text-slate-700 capitalize">
             #{pokemon.id} {pokemon.name}
@@ -68,18 +68,18 @@ export default async function PokemonPage(props: Props) {
               alt={`Imagen del pokemon ${pokemon.name}`}
               className="mb-5"
             />
-
-            <div className="flex flex-wrap">
-              {pokemon.moves.map((move) => (
-                <p key={move.move.name} className="mr-2 capitalize">
-                  {move.move.name}
-                </p>
-              ))}
-            </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 px-2 w-full">
-          <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-2 w-full">
+          <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 drop-shadow-lg">
+            <p className="text-sm text-gray-600">Skills</p>
+            {pokemon.moves.slice(0, 10).map((move) => (
+              <p key={move.move.name} className="mr-2 capitalize">
+                {move.move.name}
+              </p>
+            ))}
+          </div>
+          <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 drop-shadow-lg">
             <p className="text-sm text-gray-600">Types</p>
             <div className="text-base font-medium text-navy-700 flex">
               {pokemon.types.map((type) => (
@@ -90,14 +90,14 @@ export default async function PokemonPage(props: Props) {
             </div>
           </div>
 
-          <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg ">
+          <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 drop-shadow-lg">
             <p className="text-sm text-gray-600">Weight</p>
             <span className="text-base font-medium text-navy-700 flex">
               {pokemon.weight}
             </span>
           </div>
 
-          <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg">
+          <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 drop-shadow-lg">
             <p className="text-sm text-gray-600">Regular Sprites</p>
             <div className="flex justify-center">
               <Image
@@ -116,7 +116,7 @@ export default async function PokemonPage(props: Props) {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg">
+          <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 drop-shadow-lg">
             <p className="text-sm text-gray-600">Shiny Sprites</p>
             <div className="flex justify-center">
               <Image
