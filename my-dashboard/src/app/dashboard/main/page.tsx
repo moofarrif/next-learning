@@ -1,3 +1,4 @@
+import { SimpleWidget, WidgetGrid } from "@/components";
 import { NextPage } from "next";
 
 export const metadata = {
@@ -6,11 +7,13 @@ export const metadata = {
 };
 const MainPage: NextPage = () => {
   return (
-    <div className="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-      <div className="flex flex-col gap-8 text-left">
-        <h2 className="block font-sans text-4xl font-semibold leading-[1.3] tracking-normal  antialiased text-gray-900">
-          Main page Dashboard
-        </h2>
+    <div className="text-black p-2">
+      <span className="text-4xl font-bold text-center text-gray-800 p-2">
+        Dashboard
+      </span>
+
+      <div className="flex flex-wrap gap-10 items-center justify-center">
+        <WidgetGrid />
       </div>
     </div>
   );
