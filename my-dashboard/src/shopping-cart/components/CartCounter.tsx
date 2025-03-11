@@ -4,10 +4,6 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { decrement, increment, init } from "@/store/Counter/CounterSlice";
 
-interface Props {
-  value?: number;
-}
-
 interface CounterResponse {
   method: string;
   count: number;
@@ -16,7 +12,7 @@ interface CounterResponse {
 const getApiCounter = async (): Promise<CounterResponse> =>
   await fetch("/api/counter").then((res) => res.json());
 
-export const CartCounter = ({ value = 10 }: Props) => {
+export const CartCounter = () => {
   const count = useAppSelector((state) => state.counter.count);
   const dispatch = useAppDispatch();
 

@@ -1,4 +1,4 @@
-import { SimpleWidget, WidgetGrid } from "@/components";
+import { WidgetGrid } from "@/components";
 import { NextPage } from "next";
 
 export const metadata = {
