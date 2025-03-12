@@ -21,7 +21,7 @@ export const SimpleWidget = ({ title, href, icon, label, subTitle }: Props) => {
           <div className="flex flex-row items-center justify-center space-x-3">
             {icon}
             <div className="text-center">
-              <h4 className="text-3xl font-bold text-gray-800">{title}</h4>
+              <span className="text-3xl font-bold text-gray-800">{title}</span>
               {subTitle && (
                 <p className="text-sm text-gray-500 mt-1">{subTitle}</p>
               )}
