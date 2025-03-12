@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store";
-import { init, increment, decrement } from "@/store/counter/counterSlice";
+import { init, increment, decrement } from "@/store/counters/counterSlice";
 
 interface CounterResponse {
   method: string;
