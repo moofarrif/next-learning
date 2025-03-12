@@ -10,7 +10,7 @@ const initialState: CounterState = {
   isReady: false,
 };
 
-const CounterSlice = createSlice({
+const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
@@ -34,6 +34,8 @@ const CounterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, reset, init } = CounterSlice.actions;
 
-export default CounterSlice.reducer;
+
+export const { increment, decrement, reset, init } = counterSlice.actions;
+
+export default counterSlice.reducer;
