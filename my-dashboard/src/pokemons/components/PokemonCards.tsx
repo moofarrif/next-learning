@@ -20,7 +20,6 @@ export const PokemonCards = ({ pokemon }: Props) => {
     dispatch(toggleFavorite(pokemon));
   };
 
-  console.log(isFavorite);
 
   return (
     <div className="mx-auto right-0 mt-2 w-60">
