@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
 
-import counterRedecer  from "./counters/counterSlice"
+import counterRedecer  from "./counter/counterSlice"
 import pokemonsReducer from "./pokemons/pokemonsSlice";
 
 
