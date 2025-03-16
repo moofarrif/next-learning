@@ -16,10 +16,6 @@ export const CartCounter = () => {
   const count = useAppSelector((state) => state.counter.count);
   const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   dispatch(dispatch(init(value)));
-  // }, [dispatch, value]);
-
   useEffect(() => {
     getApiCounter().then(({ count }) => {
       dispatch(init(count));

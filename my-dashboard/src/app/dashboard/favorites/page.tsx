@@ -1,42 +1,18 @@
-import { NextPage } from "next";
-import { PokemonsGrid, PokemonsReponse, SimplePokemon } from "@/pokemons";
+import { FavoritePokemons } from "@/pokemons/components/FavoritePokemons";
 
 export const metadata = {
-  title: "Favorites",
-  description: " Pokemon favorites",
+  title: "Favoritos",
+  description: "Ad minim sit cupidatat culpa consectetur.",
 };
 
-const getPokemons = async (
-  limit = 20,
-  offset = 0
-): Promise<SimplePokemon[]> => {
-  const data: PokemonsReponse = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-  ).then((res) => res.json());
-
-  const pokemons = data.results.map((pokemon) => ({
-    id: pokemon.url.split("/").at(-2)!,
-    name: pokemon.name,
-  }));
-
-  // throw new Error("Error al obtener los pokemons");
-
-  return pokemons;
-};
-
-const PokemonsPage: NextPage = async () => {
-  const pokemons = await getPokemons();
-
+export default async function PokemonsPage() {
   return (
-    <div className="flex flex-col items-center  ">
-      <span className="text-4xl font-bold text-center text-gray-800 p-2">
-        Pokémon list <small>Global state</small>
+    <div className="flex flex-col ">
+      <span className="text-4xl font-bold text-center text-gray-800 p-2 ">
+        Favorites Pokémons <small className="text-blue-400">Global State</small>
       </span>
-      <div className="flex flex-wrap gap-10 items-center justify-center">
-        <PokemonsGrid pokemons={pokemons} />
-      </div>
+
+      <FavoritePokemons />
     </div>
   );
-};
-
-export default PokemonsPage;
+}

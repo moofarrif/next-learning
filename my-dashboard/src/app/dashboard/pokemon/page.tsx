@@ -30,7 +30,7 @@ const PokemonsPage: NextPage = async () => {
   return (
     <div className="flex flex-col items-center px-2 ">
       <span className="text-4xl font-bold text-center text-gray-800 p-2">
-        Pokémon list <small>static</small>
+        Pokémon list <small className="text-blue-400" >static</small>
       </span>
       <div className="flex flex-wrap gap-10 items-center justify-center">
         <PokemonsGrid pokemons={pokemons} />
